@@ -1,0 +1,16 @@
+img{
+  width: 1.6vw;
+  height: 1.6vw;
+  margin-bottom: 0.4vw;
+  cursor: pointer;
+  position: relative;
+  left: 0.5vw;
+}
+
+.containerButton {
+  display: flex;
+  flex-direction: column;
+  /* position: relative;
+  right: 1.8vw;
+  top: 0.2vw; */
+}

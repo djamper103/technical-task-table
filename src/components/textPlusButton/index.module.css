@@ -28,8 +28,6 @@
   line-height: 1.4
 }
 
-
-
 @media screen and (max-width: 1400px) {
   .container button{
     width: 16vw;

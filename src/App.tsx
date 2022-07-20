@@ -28,6 +28,10 @@ function App() {
 
   const dispatch = useAppDispatch();
 
+  const isModalFunc = () => {
+    setIsModal(!isModal);
+  };
+
   const setStartArray = (value?: any) => {
     if (value !== undefined) {
       if (value.line == 0 || value.column == 0) {
@@ -38,7 +42,7 @@ function App() {
     } else {
       dispatch(setNewArray());
     }
-    setIsModal(false);
+    isModalFunc();
   };
 
   const onMouseEnter = (
@@ -56,7 +60,7 @@ function App() {
       }
     } else {
       if (isMouse) {
-        dispatch(nearestElement(data, lineIndex, el));
+        dispatch(nearestElement(data, lineIndex, el, 200));
       } else {
         dispatch(nearestElement([]));
       }
@@ -64,7 +68,7 @@ function App() {
   };
 
   const tableIsNull = () => {
-    setIsModal(true);
+    isModalFunc();
     setIsTable(false);
   };
 
@@ -73,7 +77,7 @@ function App() {
   };
 
   const onDelete = (data: any, index: number) => {
-    dispatch(deleteLine(data, index, lastColumn));
+    dispatch(deleteLine(data, index, lastColumn, isModalFunc));
   };
 
   return (

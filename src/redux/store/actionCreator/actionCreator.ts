@@ -13,7 +13,6 @@ export const setArray = (data: any) => (dispatch: AppDispatch) => {
 
 export const setNewArray =
   (lineIndex?: number, column?: number) => (dispatch: AppDispatch) => {
-    // eslint-disable-next-line prefer-const
     let setData: any = setArrayFunc(lineIndex && lineIndex, column && column);
 
     const columnAverage = countColumn(setData);
@@ -38,13 +37,16 @@ export const addLine =
 
     const columnAverage = countColumn(addNewLine, lastColumn);
 
-    const result = [...addNewLine, columnAverage];
-
-    dispatch(ArrayDataSlice.actions.setArrayData({ data: result, lastColumn }));
+    dispatch(
+      ArrayDataSlice.actions.setArrayData({
+        data: [...addNewLine, columnAverage],
+        lastColumn
+      })
+    );
   };
 
 export const deleteLine =
-  (data: any, lineIndex: any, columnIndex: number) =>
+  (data: any, lineIndex: any, columnIndex: number, isModalFunc?: () => void) =>
   (dispatch: AppDispatch) => {
     if (lineIndex !== data.length - 1) {
       const arrayFilter = data.filter(
@@ -52,9 +54,12 @@ export const deleteLine =
           index != lineIndex && index != data.length - 1
       );
       const columnAverage = countColumn(arrayFilter, columnIndex);
+
+      arrayFilter.length === 0 && isModalFunc();
+
       dispatch(
         ArrayDataSlice.actions.setArrayData({
-          data: [...arrayFilter, columnAverage]
+          data: arrayFilter.length > 0 ? [...arrayFilter, columnAverage] : []
         })
       );
     }
@@ -66,9 +71,11 @@ export const editItem =
 
     const columnAverage = countColumn(arrayPlusItem);
 
-    const result = [...arrayPlusItem, columnAverage];
-
-    dispatch(ArrayDataSlice.actions.setArrayData({ data: result }));
+    dispatch(
+      ArrayDataSlice.actions.setArrayData({
+        data: [...arrayPlusItem, columnAverage]
+      })
+    );
   };
 
 export const percentOfTheNumbers =
@@ -86,13 +93,15 @@ export const percentOfTheNumbers =
   };
 
 export const nearestElement =
-  (data?: any, lineIndex?: any, el?: any) => (dispatch: AppDispatch) => {
+  (data?: any, lineIndex?: any, el?: any, nearestLimit?: number) =>
+  (dispatch: AppDispatch) => {
     let result: any = [];
     if (data.length > 0) {
       result = nearestElementFunc({
         data: data.slice(0, data.length - 1),
         lineIndex,
-        el
+        el,
+        nearestLimit
       });
     }
 

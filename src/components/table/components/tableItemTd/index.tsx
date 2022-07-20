@@ -1,6 +1,5 @@
 import React, { FC, useState } from 'react';
 import { useEffect } from 'react';
-import { COLORS } from '../../../../constants/colors';
 import { ArrayType } from '../../../../types/array';
 
 interface TableItemProps {
@@ -10,10 +9,6 @@ interface TableItemProps {
   lineIndex: number;
   onMouseEnter: (el: ArrayType, index: number, isMove: boolean) => void;
   onClick: (el: ArrayType, index: number) => void;
-}
-
-interface StyleSheet {
-  [key: string]: React.CSSProperties;
 }
 
 export const TableItemTd: FC<TableItemProps> = ({
@@ -49,15 +44,9 @@ export const TableItemTd: FC<TableItemProps> = ({
       onClick={onClickItem}
       onMouseEnter={onMouse}
       onMouseLeave={onMouse}
-      style={isNearest ? styles.anotherStyle : null}
+      style={{ backgroundColor: isNearest && '#E66570' }}
     >
       {data.amount}
     </td>
   );
-};
-
-const styles: StyleSheet = {
-  anotherStyle: {
-    backgroundColor: COLORS.SUNGLO
-  }
 };

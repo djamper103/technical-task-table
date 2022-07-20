@@ -5,8 +5,8 @@ export const setArrayFunc = (
   column?: number,
   lastColumn?: number
 ) => {
-  const defaultRangeLine = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
-  const defaultRangeColumn = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+  const defaultRangeLine = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+  const defaultRangeColumn = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
   const arrayData = [];
 
   for (let i = 0; i < (column ? column : defaultRangeColumn); i++) {

@@ -7,10 +7,20 @@ img{
   left: 0.5vw;
 }
 
+img:hover{
+ background-color: #E66570;
+ border-radius: 1.2vw;
+}
+
 .containerButton {
   display: flex;
   flex-direction: column;
-  /* position: relative;
-  right: 1.8vw;
-  top: 0.2vw; */
 }
+
+@media screen and (max-width: 600px) {
+  img{
+    width: 3vw;
+    height: 3vw;
+  }
+}
+

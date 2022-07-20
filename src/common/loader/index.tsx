@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import CircleLoader from 'react-spinners/ClipLoader';
-import { COLORS } from '../../constants/colors';
 import style from './loader.module.css';
 
 export const LoaderScreen = () => {
@@ -13,7 +12,7 @@ export const LoaderScreen = () => {
   return (
     <div className={style.loader}>
       {loading ? (
-        <CircleLoader loading={loading} color={COLORS.SUNGLO} size={300} />
+        <CircleLoader loading={loading} color={'#E66570'} size={300} />
       ) : null}
     </div>
   );

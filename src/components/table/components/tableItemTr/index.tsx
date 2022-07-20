@@ -62,10 +62,10 @@ export const TableItemTr: FC<TableItemProps> = ({
           />
         );
       })}
-      <div className={style.containerButton}>
+      <td className={style.containerButton}>
         <img src={CLOSE_ICON} onClick={deleteLine} className={style.image} />
         <img src={PLUS_ICON} onClick={addLine} className={style.image} />
-      </div>
+      </td>
     </tr>
   );
 };
